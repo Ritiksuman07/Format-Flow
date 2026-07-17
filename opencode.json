@@ -1,0 +1,155 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "research-functionality": {
+      "description": "Researches what CSV features users actually need and what problems they face. Use for product discovery and feature prioritization.",
+      "mode": "subagent",
+      "prompt": "You are a product research specialist for CSV Cleaner. Your job is to identify what functionality is missing, what competitors offer, and what real problems users face. Read the source code at /mnt/c/Users/samrat/Desktop/proto1_temp/src, then research via web search. Delegate to your sub-agents: func-sub-1 (validators), func-sub-2 (transformations), func-sub-3 (file formats), func-sub-4 (advanced features). Return a prioritized feature roadmap with estimated effort and user impact."
+    },
+    "func-sub-1": {
+      "description": "Sub-agent A1 — researches CSV validation features.",
+      "mode": "subagent",
+      "prompt": "Research CSV validation — email, phone, date, number validators, custom regex patterns, and cross-field validation."
+    },
+    "func-sub-2": {
+      "description": "Sub-agent A2 — researches data transformation features.",
+      "mode": "subagent",
+      "prompt": "Research data transformations — find/replace, regex, case conversion, column split/merge, conditional formatting, and formula-like operations."
+    },
+    "func-sub-3": {
+      "description": "Sub-agent A3 — researches file format support.",
+      "mode": "subagent",
+      "prompt": "Research file format support — XLSX import/export, JSON, XML, PDF extraction, and any other formats in demand."
+    },
+    "func-sub-4": {
+      "description": "Sub-agent A4 — researches advanced/power features.",
+      "mode": "subagent",
+      "prompt": "Research advanced features — batch processing, REST API, collaboration, large file streaming (100MB+), undo/redo, auto-save."
+    },
+    "research-technical": {
+      "description": "Researches technical architecture, performance, and infrastructure improvements for CSV Cleaner.",
+      "mode": "subagent",
+      "prompt": "You are a technical research specialist for CSV Cleaner. Research performance bottlenecks, WASM opportunities, PWA capabilities, and architectural improvements. Delegate to your sub-agents: tech-sub-1 (WASM/streaming), tech-sub-2 (PWA/offline), tech-sub-3 (React perf/bundle), tech-sub-4 (security/privacy). Return a technical improvement roadmap."
+    },
+    "tech-sub-1": {
+      "description": "Sub-agent B1 — researches WASM and streaming for large files.",
+      "mode": "subagent",
+      "prompt": "Research WASM-based CSV parsing (Papa Parse workers, DuckDB WASM, SQLite WASM), streaming parsers, chunked processing, and off-main-thread computation."
+    },
+    "tech-sub-2": {
+      "description": "Sub-agent B2 — researches PWA and offline support.",
+      "mode": "subagent",
+      "prompt": "Research PWA capabilities: service workers, offline mode, IndexedDB, install prompt, background sync. Evaluate effort vs impact."
+    },
+    "tech-sub-3": {
+      "description": "Sub-agent B3 — researches React/bundle performance.",
+      "mode": "subagent",
+      "prompt": "Research React/Next.js optimization: bundle analysis, dynamic imports, font loading, memo hot spots, Turbopack vs webpack for production."
+    },
+    "tech-sub-4": {
+      "description": "Sub-agent B4 — researches security and privacy.",
+      "mode": "subagent",
+      "prompt": "Research browser-only data tool security: CSP, sandboxing, memory cleanup, Razorpay security patterns, GDPR/CCPA compliance for zero-server architecture."
+    },
+    "research-competitor": {
+      "description": "Analyzes competitors, market positioning, and gaps for CSV Cleaner.",
+      "mode": "subagent",
+      "prompt": "You are a competitive analysis specialist. Research competing CSV/data cleaning tools, their pricing, features, reviews, and gaps. Delegate to comp-sub-1 (free tools), comp-sub-2 (premium tools), comp-sub-3 (Excel/Sheets add-ons), comp-sub-4 (user reviews/complaints). Return a competitive landscape report with differentiation opportunities."
+    },
+    "comp-sub-1": {
+      "description": "Sub-agent C1 — analyzes free CSV tools.",
+      "mode": "subagent",
+      "prompt": "Research free CSV tools (csvlint.io, csvcleaner.com, easychair, tableconvert). Compare features, limitations, monetization, user complaints."
+    },
+    "comp-sub-2": {
+      "description": "Sub-agent C2 — analyzes premium data tools.",
+      "mode": "subagent",
+      "prompt": "Research premium tools (OpenRefine, Trifacta, Tableau Prep, Alteryx, Power Query). Pricing, target audience, key features, market gaps."
+    },
+    "comp-sub-3": {
+      "description": "Sub-agent C3 — analyzes Excel/Sheets add-ons.",
+      "mode": "subagent",
+      "prompt": "Research Excel add-ins and Google Sheets extensions for data cleaning. Ratings, users, pricing, reviews."
+    },
+    "comp-sub-4": {
+      "description": "Sub-agent C4 — analyzes user reviews and complaints.",
+      "mode": "subagent",
+      "prompt": "Search Reddit, HN, Twitter, G2, Capterra for user complaints about CSV tools. Collect specific feedback and feature requests."
+    },
+    "research-marketing": {
+      "description": "Researches SEO, content, and growth marketing strategies for CSV Cleaner.",
+      "mode": "subagent",
+      "prompt": "You are a marketing and growth specialist. Research SEO keywords, content opportunities, backlink sources, communities, and conversion tactics. Delegate to mktg-sub-1 (SEO/keywords), mktg-sub-2 (backlinks/partnerships), mktg-sub-3 (social/community), mktg-sub-4 (CRO). Return a growth marketing plan."
+    },
+    "mktg-sub-1": {
+      "description": "Sub-agent D1 — researches SEO and content strategy.",
+      "mode": "subagent",
+      "prompt": "Research high-traffic SEO keywords: csv cleaner, remove duplicates csv, csv email validator, etc. Suggest article topics and page titles."
+    },
+    "mktg-sub-2": {
+      "description": "Sub-agent D2 — researches backlinks and partnerships.",
+      "mode": "subagent",
+      "prompt": "Research backlink opportunities, SaaS directories (ProductHunt, G2), data blogs, newsletters, and potential partnerships."
+    },
+    "mktg-sub-3": {
+      "description": "Sub-agent D3 — researches social and community channels.",
+      "mode": "subagent",
+      "prompt": "Research Reddit, LinkedIn, Twitter/X, Dev.to, HN, Indie Hackers, Slack/Discord communities for promotion opportunities."
+    },
+    "mktg-sub-4": {
+      "description": "Sub-agent D4 — researches conversion optimization.",
+      "mode": "subagent",
+      "prompt": "Research CRO for SaaS: landing page best practices, pricing psychology, trust signals, A/B testing frameworks for Next.js."
+    },
+    "research-ui-ux": {
+      "description": "Researches UI/UX improvements, design patterns, and accessibility for CSV Cleaner.",
+      "mode": "subagent",
+      "prompt": "You are a UI/UX research specialist. Research modern data tool UX, mobile patterns, accessibility, and onboarding. Delegate to ux-sub-1 (data tables), ux-sub-2 (mobile), ux-sub-3 (a11y), ux-sub-4 (onboarding/empty states). Return a UX improvement plan with mockup descriptions."
+    },
+    "ux-sub-1": {
+      "description": "Sub-agent E1 — researches data table UI patterns.",
+      "mode": "subagent",
+      "prompt": "Research best data table UIs (Airtable, Notion, Excel Online, AG Grid). Column ops, inline editing, selection, drag-drop, sorting, filtering."
+    },
+    "ux-sub-2": {
+      "description": "Sub-agent E2 — researches mobile responsiveness.",
+      "mode": "subagent",
+      "prompt": "Research mobile UX for data tools: responsive tables, touch controls, gestures, viewport optimization. CSV Cleaner should work on tablets/phones."
+    },
+    "ux-sub-3": {
+      "description": "Sub-agent E3 — researches accessibility.",
+      "mode": "subagent",
+      "prompt": "Research WCAG 2.2 compliance: keyboard nav, screen reader support for tables, color contrast, focus indicators, ARIA patterns."
+    },
+    "ux-sub-4": {
+      "description": "Sub-agent E4 — researches onboarding and empty states.",
+      "mode": "subagent",
+      "prompt": "Research onboarding patterns: first-run experience, empty states, loading skeletons, progress indicators, error/success UX, tooltips."
+    },
+    "research-revenue": {
+      "description": "Researches pricing optimization, monetization, and revenue growth for CSV Cleaner.",
+      "mode": "subagent",
+      "prompt": "You are a monetization specialist. Research pricing page optimization, Razorpay improvements, churn reduction, and upsell strategies. Delegate to rev-sub-1 (pricing page), rev-sub-2 (payments), rev-sub-3 (retention), rev-sub-4 (upsells/PLG). Return a revenue optimization plan."
+    },
+    "rev-sub-1": {
+      "description": "Sub-agent F1 — researches pricing page optimization.",
+      "mode": "subagent",
+      "prompt": "Research pricing page design: anchoring, decoy pricing, yearly vs monthly psychology, comparison tables, FAQ, urgency signals."
+    },
+    "rev-sub-2": {
+      "description": "Sub-agent F2 — researches Razorpay integration.",
+      "mode": "subagent",
+      "prompt": "Research Razorpay best practices: subscriptions, webhooks, failed payment recovery, checkout UX. Review current implementation."
+    },
+    "rev-sub-3": {
+      "description": "Sub-agent F3 — researches churn reduction.",
+      "mode": "subagent",
+      "prompt": "Research churn reduction: re-engagement triggers, satisfaction surveys, usage nudges, in-app retention tactics for browser-based tools."
+    },
+    "rev-sub-4": {
+      "description": "Sub-agent F4 — researches upsells and PLG.",
+      "mode": "subagent",
+      "prompt": "Research upsell strategies: usage-based gate prompts, feature gating, one-click upgrade, referral programs, product-led growth for browser tools."
+    }
+  }
+}
